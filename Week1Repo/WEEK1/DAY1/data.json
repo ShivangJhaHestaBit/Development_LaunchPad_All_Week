@@ -1,0 +1,12 @@
+[
+  {
+    "method": "Buffer",
+    "startMemoryUsage": "48.94 MB",
+    "endMemoryUsage": "116.60 MB"
+  },
+  {
+    "method": "Stream",
+    "startMemoryUsage": "49.06 MB",
+    "endMemoryUsage": "129.98 MB"
+  }
+]
