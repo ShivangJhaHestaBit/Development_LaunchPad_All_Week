@@ -1,18 +1,19 @@
 import React from "react";
+import Link from "next/link";
 import { FaTachometerAlt, FaBookOpen, FaLayerGroup, FaChartBar, FaTable } from "react-icons/fa";
 
 function Sidebar() {
   return (
     <div className="w-[100%] h-screen bg-gray-900 text-gray-300 flex flex-col p-4 space-y-6">
-      <h1 className="text-xl font-semibold text-gray-200 mb-4">
+      <Link href="/" className="flex items-center text-xl font-semibold text-gray-200 mb-4 hover:bg-gray-800 h-[50px]">
         Start Bootstrap
-      </h1>
+      </Link>
       <div>
-        <p className="text-xs text-gray-500 uppercase mb-2">CORE</p>
-        <div className="flex items-center gap-3 p-2 bg-gray-800 text-white cursor-pointer">
+        <p className="text-xs text-gray-500 mb-2">CORE</p>
+        <Link href="/dashboard" className="flex items-center gap-3 p-2 hover:bg-gray-800 text-white cursor-pointer">
           <FaTachometerAlt className="text-lg" />
           <span>Dashboard</span>
-        </div>
+        </Link>
       </div>
       <div>
         <p className="text-xs text-gray-500 mb-2">INTERFACE</p>

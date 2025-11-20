@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Sidebar from "@/components/ui/Sidebar";
 import Modal from "@/components/ui/Modal";
-export default function RootLayout() {
+export default function RootLayout({children}) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   return (
     <html lang="en">
@@ -19,7 +19,7 @@ export default function RootLayout() {
               <Navbar toggleSidebar={() => setSidebarOpen(prev => !prev)} />
             </header>
             <main className="flex-1 overflow-y-auto p-4 scrollbar-hide">
-              <Modal />
+              {children}
             </main>
           </div>
         </div>

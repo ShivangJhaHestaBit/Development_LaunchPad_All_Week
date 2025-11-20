@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+// ...existing code...
+# Launchpad Week 3 — Components Overview
 
-## Getting Started
+This project is a small Next.js dashboard UI built with React and Tailwind CSS. Below is a concise reference for each UI component, graph, layout, and page so you can quickly find and reuse them.
 
-First, run the development server:
+## Core layout & pages
+-RootLayout  
+  Top-level client layout that composes the app chrome (sidebar + navbar) and renders page content via children. Manages UI state such as whether the sidebar is visible.  
+  Usage: Wraps all pages; used automatically by Next.js at [app/layout.jsx](app/layout.jsx).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Pages:
+  -Landing page component  
+    Minimal static landing content used as the site's root route.  
+    Usage: Rendered at `/`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  -About page component  
+    Static informational page for project/about content.  
+    Usage: Rendered at `/about`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  -Dashboard page component  
+    Page that composes Cards, Graphs and Datatable to demonstrate dashboard UI. Acts as an example container showing component composition and responsive layout.  
+    Usage: Rendered at `/dashboard`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  -Dashboard Profile page  
+        Simple user profile placeholder under dashboard section.  
+        Usage: Rendered at `/dashboard/profile`.
 
-## Learn More
+## UI components (components/ui)
+-Navbar  
+    Top app bar that exposes a compact search (`Input`) and the hamburger toggle for the sidebar. Receives a `toggleSidebar` callback prop to flip sidebar state. Keeps the header visually consistent and handles header-level controls.  
+    Usage: Used inside [`RootLayout`](app/layout.jsx) as the page header.
 
-To learn more about Next.js, take a look at the following resources:
+-Sidebar  
+    Vertical navigation component that groups navigation links (Core, Interface, Addons). Stateless visual component — uses Next's `Link` for client navigation. Responsible for primary site navigation and consistent item styling.  
+    Usage: Rendered by [`RootLayout`](app/layout.jsx) when `sidebarOpen` is true.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-Input (Search)  
+    Small, reusable search input with a button and icon. Encapsulates markup + styles for search controls so other components (Navbar, Datatable) can reuse the same UI. Stateless; can be extended to accept value/handlers.  
+    Usage: Present in [`Navbar`](components/ui/Navbar.jsx) and [`Datatable`](components/ui/Datatable.jsx).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+-Card (Stat Card)  
+    Compact statistic / CTA card with two-row layout: header area and footer button. Receives `CardName`, `BgColor1`, `BgColor2` props to control title and background color variants. Focuses on presentational concerns and simple CTA behavior.  
+    Usage: Used in [`app/dashboard/page.jsx`](app/dashboard/page.jsx) and [`components/ui/Modal.jsx`](components/ui/Modal.jsx) for dashboard stat rows.
 
-## Deploy on Vercel
+-Graph wrapper  
+    Generic container for chart visuals. Accepts `title`, `icon` (component), and `typeofgraph` (a rendered chart element). Provides consistent framing (title bar, border, fixed height) and places the chart inside a responsive area. Keeps chart integration concerns out of pages.  
+    Usage: Wraps chart components like [`Areachart`](components/Graphs/Area-chart.jsx) and [`Bargraph`](components/Graphs/Bar-graph.jsx) in [`app/dashboard/page.jsx`](app/dashboard/page.jsx) and [`components/ui/Modal.jsx`](components/ui/Modal.jsx).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-Datatable (UI scaffold)  
+    Presentational table scaffold with header, page-size control and integrated search (`Input`). Designed to show table controls and layout; does not include data fetching or row rendering logic. Useful as a starting point for wiring actual data.  
+    Usage: Displayed on the dashboard and inside the modal demo [`components/ui/Modal.jsx`](components/ui/Modal.jsx).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Graph components (components/Graphs)
+-Areachart (Line/Area chart)  
+    Chart component built with `react-chartjs-2` and Chart.js that renders a line chart with area fill. Registers required Chart.js components and supplies a simple timeseries dataset and options. Keeps chart configuration local so pages only need to place the component.  
+    Usage: Passed as `typeofgraph` into [`Graph`](components/ui/Graph.jsx) on the dashboard.
+
+  -Bargraph  
+    Bar chart example using `react-chartjs-2` and Chart.js. Encapsulates dataset and chart options; registers minimal Chart.js pieces. Intended as a presentational graph component.  
+    Usage: Shown inside [`Graph`](components/ui/Graph.jsx) on the dashboard.
