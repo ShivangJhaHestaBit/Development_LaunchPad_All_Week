@@ -1,3 +1,4 @@
+import { BorderBeam } from "@/components/ui/border-beam";
 import Card from "@/components/ui/Card";
 import Graph from "@/components/ui/Graph";
 import Datatable from "@/components/ui/Datatable";
