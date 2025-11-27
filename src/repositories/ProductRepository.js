@@ -4,8 +4,12 @@ export default class ProductRepository {
         const pro = new product(data);
         return await pro.save();
     }
-    async findById(id) {
-        return await product.findById(id);
+    static async findById(id, includeDeleted = false) {
+        const filter = { _id: id };
+        if (!includeDeleted) {
+            filter.isDeleted = false;
+        }
+        return product.findOne(filter);
     }
     async findPaginated(page = 1, limit = 10) {
         const skip = (page - 1) * limit;
@@ -33,5 +37,21 @@ export default class ProductRepository {
     async delete(id) {
         const result = await product.findByIdAndDelete(id);
         return result;
+    }
+    static async softDelete(id) {
+        return product.findByIdAndUpdate(
+            id,
+            { isDeleted: true, deletedAt: new Date() },
+            { new: true }
+        );
+    }
+    static async findProducts(filter, sortOptions, includeDeleted) {
+        if (!includeDeleted) {
+            filter.isDeleted = false;
+        }
+        return product
+            .find(filter)
+            .sort(sortOptions)
+            .exec();
     }
 }
