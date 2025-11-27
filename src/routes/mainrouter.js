@@ -12,10 +12,9 @@ export default function MAIN_ROUTER() {
         res.send('About');
     });
     router.get('/about/help', (req, res) => {
-        console.log('About');
-        res.send('About');
+        console.log('Help');
+        res.send('Help');
     });
-    console.log(router.stack);
     const routecount = router.stack.length;
     // console.log(router);
     logger.info(`Total Routes: ${routecount}`);
