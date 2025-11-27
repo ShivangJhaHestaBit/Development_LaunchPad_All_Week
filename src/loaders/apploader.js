@@ -9,7 +9,7 @@ export default async function appLoader() {
   loadEnv();
   const app = expressLoader();
   const db = await dbLoader();
-  loadMiddlewares(app);
   app.use(MAIN_ROUTER());
+  loadMiddlewares(app);
   return app;
 }

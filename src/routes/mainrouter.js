@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import logger from '../utils/logger.js';
+import ProductController from '../controllers/ProductController.js';
 const router = Router();
 
 export default function MAIN_ROUTER() {
@@ -15,6 +16,11 @@ export default function MAIN_ROUTER() {
         console.log('Help');
         res.send('Help');
     });
+    router.get('/test',(req, res) =>{
+        throw new Error("Something went wrong");
+    });
+    router.get('/products',ProductController.getProducts);
+    router.delete('/products/:id', ProductController.softDelete);
     const routecount = router.stack.length;
     // console.log(router);
     logger.info(`Total Routes: ${routecount}`);
