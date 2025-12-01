@@ -1,6 +1,7 @@
 import loadEnv from "../config/env.js";
 import expressLoader from "./express.js";
 import logger from "../utils/logger.js";
+import jobLoader from "./jobloader.js";
 import loadMiddlewares from "../middlewares/mwloader.js";
 import dbLoader from "./db.js";
 import UserModel from "../models/user.js";
@@ -12,5 +13,6 @@ export default async function appLoader() {
   const db = await dbLoader();
   loadMiddlewares(app);
   app.use("/", router);
+  await jobLoader(); 
   return app;
 }
