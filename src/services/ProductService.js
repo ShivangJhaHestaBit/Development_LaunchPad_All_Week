@@ -8,17 +8,20 @@ class ProductService {
         }
         return deletedProduct;
     }
+    static async updateProduct(id, data) {
+        return ProductRepository.update(id, data);
+    }
     static async getProducts(queryParams) {
         const {
             search,
             minPrice,
             maxPrice,
             sort,
-            tags
+            tags,
+            includeDeleted
         } = queryParams;
-
-        const filter = {deletedAt: null};
-        if (queryParams.includeDeleted === "true") {
+        const filter = { deletedAt: null };
+        if (includeDeleted === "true") {
             delete filter.deletedAt;
         }
         if (search) {

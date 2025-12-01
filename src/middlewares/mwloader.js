@@ -1,9 +1,8 @@
+import requestTracing from "./requestTracing.js";
 import globalErrorHandler from "./errorMiddleware.js";
+import security from "./security.js";
 export default function loadMiddlewares(app) {
-    app.use((req, res, next) => {
-        const err = new Error("Route not found");
-        err.statusCode = 404;
-        next(err);
-    });
+    app.use(requestTracing);
+    security(app);
     app.use(globalErrorHandler);
 }

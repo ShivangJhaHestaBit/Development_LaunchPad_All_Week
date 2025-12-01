@@ -1,0 +1,6 @@
+✓ [579ba816-9600-4672-b07e-d67b838185b9] Incoming request → GET /
+✓ [579ba816-9600-4672-b07e-d67b838185b9] Response sent → Status: 200
+✓ [74ac258b-640f-4058-89d1-457e455caa5f] Incoming request → GET /favicon.ico
+✓ [74ac258b-640f-4058-89d1-457e455caa5f] Response sent → Status: 404
+✓ [d9f35601-7fcb-49ac-ad00-16b1180e3c4b] Incoming request → GET /about
+✓ [d9f35601-7fcb-49ac-ad00-16b1180e3c4b] Response sent → Status: 200

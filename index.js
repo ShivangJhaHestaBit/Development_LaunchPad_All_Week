@@ -1,10 +1,12 @@
 import appLoader from "./src/loaders/apploader.js";
+import helmet from "helmet";
 import UserRepository from "./src/repositories/UserRepository.js";
 import ProductRepository from "./src/repositories/ProductRepository.js";
 import logger from "./src/utils/logger.js";
 async function startServer() {
     const PORT = process.env.PORT || 3001;
     const app = await appLoader();
+    app.use(helmet());
     app.listen(PORT, () => {
         logger.info(`Server running on http://localhost:${PORT}`);
     });
