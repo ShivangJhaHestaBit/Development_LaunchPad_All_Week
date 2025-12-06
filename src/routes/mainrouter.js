@@ -1,8 +1,11 @@
 import { Router } from 'express';
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "../docs/swagger.js";
 import logger from '../utils/logger.js';
 import userRouter from "./user.route.js";
 import productRouter from "./product.route.js";
 const router = Router();
+router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 router.get('/', (req, res) => {
     console.log('Hello World');
     res.send('Hello World');
