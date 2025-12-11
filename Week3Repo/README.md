@@ -194,29 +194,34 @@ This README provides:
 
 ---
 Screenshots->
-  Landing Page
-    ![alt text](/screenshots/image-1.png)
-    ![alt text](/screenshots/image.png)
+# Landing Page
 
-  DashBoard
-    ![alt text](/screenshots/image-2.png)
-    ![alt text](/screenshots/image-6.png)
+![alt text](/Week3Repo/screenshots/image-1.png)
+![alt text](/Week3Repo/screenshots/image.png)
 
-  Sign in card
-    ![alt text](/screenshots/image-3.png)
+# DashBoard
 
-  Profile page
-    ![alt text](/screenshots/image-4.png)
+  ![alt text](/Week3Repo/screenshots/image-2.png)
+  ![alt text](/Week3Repo/screenshots/image-6.png)
 
-  User List
-    ![alt text](/screenshots/image-5.png)
+# Sign in card
 
-When screen size is small
+  ![alt text](/Week3Repo/screenshots/image-3.png)
 
-  ![alt text](/screenshots/image-7.png)
-  ![alt text](/screenshots/image-8.png)
-  ![alt text](/screenshots/image-9.png)
-  ![alt text](/screenshots/image-10.png)
-  ![alt text](/screenshots/image-11.png)
-  ![alt text](/screenshots/image-12.png)
+# Profile page
+  
+  ![alt text](/Week3Repo/screenshots/image-4.png)
+
+# User List
+
+  ![alt text](/Week3Repo/screenshots/image-5.png)
+
+# When screen size is small
+
+  ![alt text](/Week3Repo/screenshots/image-7.png)
+  ![alt text](/Week3Repo/screenshots/image-8.png)
+  ![alt text](/Week3Repo/screenshots/image-9.png)
+  ![alt text](/Week3Repo/screenshots/image-10.png)
+  ![alt text](/Week3Repo/screenshots/image-11.png)
+  ![alt text](/Week3Repo/screenshots/image-12.png)
   
